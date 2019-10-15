@@ -1,19 +1,19 @@
 <template>
-  <div id='app'>
-    <router-view></router-view>
+  <div id="app">
+    <router-view/>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: app,
-  data: () => {
+  name: 'app',
+  data() {
     return {
 
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style>

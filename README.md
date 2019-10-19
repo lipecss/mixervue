@@ -1,4 +1,5 @@
-# teste
+# About
+Hey Guys, all right? Thats my first project using this powerfull framework, Vuejs. With it you can find and show your favorite Streamer's info in a clean and beautyful page.
 
 ## Project setup
 ```

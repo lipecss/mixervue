@@ -1,6 +1,5 @@
 <template>
   <div class="">
-
     <div class="row">
       <div class="col-md-4 offset-md-4 text-center">
         <a class="image-logo" href="#">
@@ -8,7 +7,7 @@
         </a>
       </div>
     </div>
-    <div id="row">
+    <div class="row searsher">
       <div class="col-md-8 offset-md-2">
         <input
           v-model="username"
@@ -61,7 +60,7 @@ export default {
       if (valorNovo !== valorAntigo && valorNovo !== '') {
         this.buscarUsuario();
       } else if (valorNovo === '') {
-        this.data = ' ';
+        this.data = '';
       }
     },
   },
@@ -69,5 +68,28 @@ export default {
 </script>
 
 <style scoped>
+.searsher{
+  padding: 10px
+}
 
+#username{
+
+ border-radius: 25px;
+}
+
+.red{
+  background: red;
+}
+.green{
+  background: green;
+}
+.orange{
+  background: orange;
+}
+.blue{
+  background: blue;
+}
+.tomato{
+  background: tomato
+}
 </style>

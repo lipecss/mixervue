@@ -17,12 +17,6 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: industry, sans-serif;
-  font-style: normal;
-  color: rgba(255,255,255,0.6);
-
-}
 
 
 /*

@@ -1,14 +1,15 @@
 <template>
   <div class="">
-    <div id="principal-box" class="row" :style="{ background: `url(${propLista.type.backgroundUrl})` }">
+    <div id="principal-box" class="row" :style="{background: propLista.type ? `url(${propLista.type.backgroundUrl})` : '#151d28' }">
         <div class="col-md-3">
           <a :href="channelLink+propLista.token" target="_blank">
-            <img id="avatar" v-bind:src="propLista.user.avatarUrl" alt="Game Image">
+            <img v-if="propLista.user.avatarUrl != null" id="avatar" v-bind:src="propLista.user.avatarUrl" alt="Game Image">
+            <img v-else id="avatar" src="https://mixer.com/_latest/assets/images/main/avatars/default.png" alt="Game Image">
           </a>
         </div>
         <div class="col-md-9 info">
             <div class="row mixerbar-color">
-              <div id="game-image" class="col-md-2">
+              <div v-if="propLista.type" id="game-image" class="col-md-2">
                 <a :href="gameStreamsLink" target="_blank">
                   <img :src="propLista.type.coverUrl" alt="">
                 </a>
@@ -23,9 +24,16 @@
                   </div>
 
                   <div class="row">
-                    <div id="playing" class="col-md-12">
+                    <div v-if="propLista.type" id="playing" class="col-md-12">
                       <h5 v-if="propLista.online">Currently playing {{propLista.type.name}}</h5>
                       <h5 v-else>Was playing {{propLista.type.name}}</h5>
+                      <h5 id="followers">{{propLista.numFollowers.toLocaleString('pt-BR')}} SEGUIDORES  </h5>
+                    </div>
+
+                    <div v-else id="playing" class="col-md-12">
+                      <h5 v-if="propLista.online">Currently playing {{propLista.type.name}}</h5>
+                      <h5 v-else>Não iniciou uma Live ainda</h5>
+                      <h5 id="followers">{{propLista.numFollowers.toLocaleString('pt-BR')}} SEGUIDORES  </h5>
                     </div>
                   </div>
 
@@ -68,7 +76,7 @@
         </div>
     </div>
 
-    <div id="live-box" class="row" v-if="propLista.online">
+    <div id="live-box" class="row green" v-if="propLista.online">
       <div class="col-md-8">
         <iframe id="embed-player" :src="video"></iframe>
       </div>
@@ -150,9 +158,9 @@
     </div>
 
 
-    <footer class="green">
-      <p>Mixer is the property of Microsoft. This is an open-source passion-project and is in no way affiliated or endorsed by Microsoft or Mixer.</p>
-    </footer>
+    <div id="aboutme-box" class="row tomato">
+      <p>Se você tiver alguma dúvida, visite nossa página de contato </p>
+    </div>
 
   </div>
 </template>
@@ -199,7 +207,7 @@ export default {
   },
   props: {
     propLista: {
-      type: [Object],
+      type: [Object, Array, String],
       required: true,
     },
   },
@@ -219,7 +227,11 @@ export default {
     },
     gameStreamsLink: {
       get: function() {
-        return `https://mixer.com/browse/games/${this.propLista.typeId}`
+        if(this.propLista.type){
+          return `https://mixer.com/browse/games/${this.propLista.typeId}`
+        }else{
+          return ''
+        }
       }
     }
   },
@@ -227,6 +239,12 @@ export default {
 </script>
 
 <style scoped>
+
+#followers{
+  font-family: 'Anton', sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+}
 
 #aboutwho{
   font-family: industry, sans-serif;
@@ -246,6 +264,7 @@ export default {
     background-position: center center;
     background-attachment: fixed;
     border: 1px solid rgba(255,255,255,0.6);
+    font-family: myriad-pro, sans-serif;
     /* filter: contrast(45%) */
 }
 
@@ -271,6 +290,7 @@ export default {
 
 #player{
   margin: 0;
+  font-family: myriad-pro-condensed, sans-serif;
 }
 
 #player img{
@@ -281,7 +301,7 @@ export default {
 #playing{
   color: white;
   font-size: 30px;
-
+  font-family: myriad-pro-condensed, sans-serif;
 }
 
 #infos{
@@ -372,6 +392,17 @@ export default {
     border-radius: 25px;
 }
 
+#aboutme-box{
+  background: rgba(40, 40, 40, 0.8);
+  color: white;
+  border-radius: 25px;
+  box-shadow: 12px 9px 82px -12px #df158a;
+  padding: 20px;
+  margin-top: 15px;
+  margin-bottom:  15px;
+  padding: 20px;
+  border: 1px solid #df158a;
+}
 table {
   margin-top: 20px;
   width: 100%;

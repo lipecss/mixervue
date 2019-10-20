@@ -4,6 +4,14 @@
       <div id="main" class="col-md-12">
         <AutoComplete @return-autocomplete="recebeDados('mixer', $event)"/>
         <InfoUser :propLista="lista"/>
+
+      </div>
+      <div id="api-information" class="row">
+          <div class="col-md-12">
+            <p>Mixer is owned by Microsoft. This project is open source and uses only public information directly from the MIXER API.</p>
+            <p>If you do not want it to be Public, please contact Mixer directly</p>
+            <p>MixerVue não é afiliado com Mixer</p>
+          </div>
       </div>
     </div>
   </div>
@@ -34,19 +42,39 @@ export default {
 };
 </script>
 
+
 <style>
+
 .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
+#api-information{
+  border-radius: 25px;
+  box-shadow: 12px 9px 82px -12px #0075d5;
+  color: white;
+  text-align: center;
+  font-family: myriad-pro-condensed, sans-serif;
+  font-size: 20px;
+  left: 20%;
+  padding: 10px;
+  position: sticky;
+  margin-top: 20px;
+}
 body {
     margin: 15px;
     font-size: 1rem;
     line-height: 1.5;
     background-color: #212c3d ;
+}
+
+ul {
+
+list-style-type: none;
+
 }
 </style>

@@ -50,10 +50,10 @@
             <div class="row">
               <div id="infos" class="col-md-12">
                 <span id="level"><font-awesome-icon icon="sort-amount-up-alt" /> Level: {{propLista.user.level}}</span>
-                <span id="xp"><font-awesome-icon icon="hat-wizard" /> XP: {{propLista.user.experience}}</span>
+                <span id="xp"><font-awesome-icon icon="hat-wizard" /> {{propLista.user.experience.toLocaleString('pt-BR')}} XP</span>
                 <span id="sparks">
                 <img src="img/spark-coin.svg" height="20px" width="20px" />
-                <span> {{propLista.user.sparks}}</span>
+                <span> {{propLista.user.sparks.toLocaleString('pt-BR')}}</span>
               </span>
               <span id="created"> <font-awesome-icon icon="calendar-alt" /> {{ propLista.createdAt | moment("LL") }}</span>
               </div>
@@ -68,6 +68,15 @@
         </div>
     </div>
 
+    <div id="live-box" class="row" v-if="propLista.online">
+      <div class="col-md-8">
+        <iframe id="embed-player" :src="video"></iframe>
+      </div>
+      <div class="col-md-4">
+        <iframe id="embed-chat" :src="chat"></iframe>
+      </div>
+    </div>
+
     <div id="about-box" v-if="propLista.description" class="row">
       <div class="col-md-12">
         <i id="aboutwho">Sobre o {{propLista.token}}</i>
@@ -77,15 +86,6 @@
         <div class="col-md-12" v-html="propLista.description">
         </div>
       </div>
-    </div>
-
-    <div id="live-box" class="row green" v-if="propLista.online">
-        <div class="col-md-8">
-            <iframe id="embed-player" :src="video"></iframe>
-        </div>
-        <div class="col-md-4">
-            <iframe id="embed-chat" :src="chat"></iframe>
-        </div>
     </div>
 
     <div id="analytics-box" class="row orange">
@@ -150,9 +150,9 @@
     </div>
 
 
-    <div class="row tomato">
-
-    </div>
+    <footer class="green">
+      <p>Mixer is the property of Microsoft. This is an open-source passion-project and is in no way affiliated or endorsed by Microsoft or Mixer.</p>
+    </footer>
 
   </div>
 </template>

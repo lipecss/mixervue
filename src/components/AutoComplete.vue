@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="row searsher">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-md-6 offset-md-3">
         <input
           v-model="username"
           id="username"
@@ -38,6 +38,7 @@ export default {
         'https://raw.githubusercontent.com/mixer/branding-kit/master/png/MixerMerge_Black.png',
       username: '',
       data: '',
+      errors: [],
     };
   },
   methods: {
@@ -49,6 +50,7 @@ export default {
           // JSON responses are automatically parsed.
           //this.data = response.data;
           this.$emit('return-autocomplete', response.data)
+          console.log(this.response)
         })
         .catch((e) => {
           this.errors.push(e);

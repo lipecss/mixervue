@@ -8,8 +8,8 @@
       </div>
       <div id="api-information" class="row">
           <div class="col-md-12">
-            <p>Mixer is owned by Microsoft. This project is open source and uses only public information directly from the MIXER API.</p>
-            <p>If you do not want it to be Public, please contact Mixer directly</p>
+            <p>A Mixer é de propriedade da Microsoft. Este projeto é de código aberto e usa apenas informações públicas diretamente da API MIXER.</p>
+            <p>Se você não deseja que seus dados sejam Públicos, entre em contato diretamente com o Mixer</p>
             <p>MixerVue não é afiliado com Mixer</p>
           </div>
       </div>
@@ -60,9 +60,9 @@ export default {
   text-align: center;
   font-family: myriad-pro-condensed, sans-serif;
   font-size: 20px;
-  left: 20%;
-  padding: 10px;
-  position: sticky;
+  width:80%;
+  padding:20px;
+  margin:0 auto;
   margin-top: 20px;
 }
 body {

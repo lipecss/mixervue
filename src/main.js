@@ -3,17 +3,18 @@ import App from './App.vue';
 import './plugins/bootstrap-vue';
 import router from './router';
 import store from './store';
-//Moment
+// Moment
 import moment from 'vue-moment';
 Vue.use(require('vue-moment'));
-//FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEye, faSortAmountUpAlt, faHatWizard, faCalendarAlt} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// FontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebook, faTwitter, faYoutube, faInstagram, faSteam } from '@fortawesome/fontawesome-free-brands';
+import { faEye, faSortAmountUpAlt, faHatWizard, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faEye, faSortAmountUpAlt, faHatWizard, faCalendarAlt)
+library.add(faEye, faSortAmountUpAlt, faHatWizard, faCalendarAlt, faFacebook, faTwitter, faYoutube, faInstagram, faSteam);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;
 

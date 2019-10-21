@@ -18,6 +18,16 @@ export default {
 
 <style>
 
+input{
+  background: #131d2c;
+  border-radius: 2px;
+  outline: 0 !important;
+  padding: 0.7em;
+  font-size: 0.9em;
+  color: #fff;
+  border: 2px solid transparent;
+  width: 100%;
+}
 
 /*
   WEB KIT

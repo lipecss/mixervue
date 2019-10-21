@@ -2,10 +2,24 @@
   <div class="">
     <div id="principal-box" class="row" :style="{background: propLista.type ? `url(${propLista.type.backgroundUrl})` : '#151d28' }">
         <div class="col-md-3">
-          <a :href="channelLink+propLista.token" target="_blank">
+          <a id="player-image" :href="channelLink+propLista.token" target="_blank">
             <img v-if="propLista.user.avatarUrl != null" id="avatar" v-bind:src="propLista.user.avatarUrl" alt="Game Image">
             <img v-else id="avatar" src="https://mixer.com/_latest/assets/images/main/avatars/default.png" alt="Game Image">
           </a>
+          <div v-if="propLista.user.social" class="row social-medias">
+            <div v-if="propLista.user.social.facebook" class="col-md-3 socials">
+              <a :href="propLista.user.social.facebook" id="btn-facebook" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook-f' }"/></a>
+            </div>
+            <div v-if="propLista.user.social.instagram"  class="col-md-3 socials">
+              <a :href="propLista.user.social.instagram" id="btn-instagram" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/></a>
+            </div>
+            <div v-if="propLista.user.social.twitter" class="col-md-3 socials">
+              <a :href="propLista.user.social.twitter" id="btn-twitter" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }"/></a>
+            </div>
+            <div v-if="propLista.user.social.youtube" class="col-md-3 socials">
+              <a :href="propLista.user.social.youtube" id="btn-youtube" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'youtube' }"/></a>
+            </div>
+          </div>
         </div>
         <div class="col-md-9 info">
             <div class="row mixerbar-color">
@@ -17,16 +31,24 @@
 
               <div id="playing" class="col-md-10">
                   <div class="row">
-                      <div id="player" class="col-md-12">
+                      <div id="player" class="col-md-8">
                           <i>{{propLista.token}} </i>
                           <img v-if="propLista.partnered" src="img/verified.png">
+                      </div>
+
+                      <div id="role-verified" class="col-md-2">
+                          <i>VERIFICADO</i>
+                      </div>
+
+                      <div id="role-pro" class="col-md-2">
+                          <i>PRO</i>
                       </div>
                   </div>
 
                   <div class="row">
                     <div v-if="propLista.type" id="playing" class="col-md-12">
-                      <h5 v-if="propLista.online">Currently playing {{propLista.type.name}}</h5>
-                      <h5 v-else>Was playing {{propLista.type.name}}</h5>
+                      <h5 v-if="propLista.online">Jogando atualmente {{propLista.type.name}}</h5>
+                      <h5 v-else>Estava jogando {{propLista.type.name}}</h5>
                       <h5 id="followers">{{propLista.numFollowers.toLocaleString('pt-BR')}} SEGUIDORES  </h5>
                     </div>
 
@@ -112,7 +134,7 @@
                 <table class="table table-dark">
                   <tr class="">
                     <td>Logo</td>
-                    <td>Username</td>
+                    <td>Apelido</td>
                     <td>Sparks</td>
                   </tr>
                   <tr v-for="(spark, index) in leaderboard"  v-bind:key="index" :spark="spark">
@@ -141,7 +163,7 @@
             <table class="table table-dark">
               <tr class="">
                 <td>Logo</td>
-                <td>Username</td>
+                <td>Apelido</td>
                 <td>Sparks</td>
               </tr>
               <tr v-for="(spark, index) in leaderboard"  v-bind:key="index" :spark="spark">
@@ -159,7 +181,7 @@
 
 
     <div id="aboutme-box" class="row tomato">
-      <p>Se você tiver alguma dúvida, visite nossa página de contato </p>
+      <p>Se você tiver alguma dúvida ou sugestão, me envie um DM no <a href="https://instagram.com/felipecss" target="_blank" rel="noopener noreferrer">@Felipecss</a></p>
     </div>
 
   </div>
@@ -217,7 +239,7 @@ export default {
   computed: {
     video: {
       get: function() {
-        return `https://mixer.com/embed/player/${this.propLista.token}?disableCostream=true&muted=true&hideChannel=true`
+        return `https://mixer.com/embed/player/${this.propLista.token}?muted=true&hideChannel=true`
       }
     },
     chat: {
@@ -271,10 +293,53 @@ export default {
 
 #avatar{
     border-radius: 100%;
-    padding: 10px;
+    /* padding: 10px; */
     padding-left: 0px;
     width: 100%;
     margin: 15px 0px 0px;
+    border: 6px solid rgb(23, 30, 42);
+}
+
+.social-medias{
+  padding-top: 15px;
+  /* padding: 10px; */
+}
+
+.socials{
+  margin: 0px;
+  padding: 0px;
+}
+
+#btn-facebook{
+  color: #fff;
+  background-color: #255c95;
+  border-radius: 100%;
+  font-size: 25px;
+  padding: 8px 18px;
+}
+
+#btn-instagram{
+  color: #fff;
+  background-color: #d93175;
+  border-radius: 100%;
+  font-size: 25px;
+  padding: 8px 13px;
+}
+
+#btn-twitter{
+  color: #fff;
+  background-color: #00b4e0;
+  border-radius: 100%;
+  font-size: 25px;
+  padding: 8px 13px;
+}
+
+#btn-youtube{
+  color: #fff;
+  background-color: #e52d27;
+  border-radius: 100%;
+  font-size: 25px;
+  padding: 8px 13px;
 }
 
 #game-image{
@@ -296,6 +361,29 @@ export default {
 #player img{
   height: 20px;
   width: 20px;
+}
+
+#role-verified{
+  margin: 0 -18px 0 0;
+}
+
+#role-verified i{
+  color: #299fff;
+  font-size: 20px;
+  font-family: anton, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#role-pro{
+  color: #e175ff;
+}
+
+#role-pro i {
+  font-size: 20px;
+  font-family: anton, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #playing{

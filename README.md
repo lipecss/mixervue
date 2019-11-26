@@ -1,6 +1,8 @@
 # About
 Hey Guys, all right? Thats my first project using this powerfull framework, Vuejs. With it you can find and show your favorite Streamer's info in a clean and beautiful page.
 
+https://mixervue.netlify.com/
+
 ## Features
 - You can use this tool in all devices (PC, Smartphones, Tablets and Consoles). The site is fully responsive, providing a pleasant use for each type and size of screen.
 
